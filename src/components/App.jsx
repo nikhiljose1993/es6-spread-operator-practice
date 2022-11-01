@@ -5,6 +5,13 @@ function App() {
   const [item, setItem] = useState("");
   const [items, setItems] = useState([]);
 
+  const deleteItem = (id) => {
+    const newItems = items.filter((items, index) => {
+      return index !== id;
+    });
+    setItems(newItems);
+  };
+
   return (
     <div className="container">
       <div className="heading">
@@ -32,8 +39,15 @@ function App() {
       </div>
       <div>
         <ul>
-          {items.map((listItem, i) => {
-            return <ToDoItem listItem={listItem} index={i} />;
+          {items.map((listItem, index) => {
+            return (
+              <ToDoItem
+                key={index}
+                id={index}
+                text={listItem}
+                onCheck={deleteItem}
+              />
+            );
           })}
         </ul>
       </div>

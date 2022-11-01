@@ -1,15 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 
-const ToDoItem = ({ listItem, index }) => {
-  const [crossed, setCrossed] = useState(false);
-
+const ToDoItem = ({ id, text, onCheck }) => {
   return (
     <li
-      style={crossed ? { textDecorationLine: "line-through" } : {}}
-      onClick={() => setCrossed(!crossed)}
-      key={index}
+      onClick={() => {
+        onCheck(id);
+      }}
+      id={id}
     >
-      {listItem}
+      {text}
     </li>
   );
 };
