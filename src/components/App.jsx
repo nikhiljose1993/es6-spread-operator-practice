@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ToDoItem from "./ToDoItem";
 
 function App() {
   const [item, setItem] = useState("");
@@ -20,7 +21,7 @@ function App() {
         />
         <button
           onClick={() => {
-            if (item !== "") {
+            if (item?.trim() !== "") {
               setItems([...items, item]);
               setItem("");
             }
@@ -32,7 +33,7 @@ function App() {
       <div>
         <ul>
           {items.map((listItem, i) => {
-            return <li key={i}>{listItem}</li>;
+            return <ToDoItem listItem={listItem} index={i} />;
           })}
         </ul>
       </div>
