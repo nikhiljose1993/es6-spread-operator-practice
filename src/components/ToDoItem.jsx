@@ -6,7 +6,6 @@ const ToDoItem = ({ id, text, onCheck }) => {
       onClick={() => {
         onCheck(id);
       }}
-      id={id}
     >
       {text}
     </li>
